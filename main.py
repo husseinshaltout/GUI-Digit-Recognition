@@ -34,7 +34,7 @@ class DigitsClassifier(Frame):
                                   event.x + self.brush_size,
                                   event.y + self.brush_size,
                                   fill=self.color, outline=self.color)
-            
+
     def save(self):
         """Save the current canvas state as the postscript
         uses classify method and shows the result"""
@@ -71,7 +71,7 @@ class DigitsClassifier(Frame):
         text_label.grid(row=0, column=5, padx=5, pady=5)
     def setUI(self):
         """Setup for all UI elements"""
-        self.parent.title("Drawn Digit Classifier")
+        self.parent.title("Digit Reconition")
         self.pack(fill=BOTH, expand=1)
         self.columnconfigure(6,weight=1)
         self.rowconfigure(2, weight=1)
@@ -93,21 +93,18 @@ class DigitsClassifier(Frame):
         clear_btn = Button(self, text="Clear all", width=10,
                            command=lambda: self.canv.delete("all"))
         clear_btn.grid(row=0, column=4, sticky=W)
+        
         size_lab = Label(self, text="Brush size: ")
         size_lab.grid(row=1, column=0, padx=5)
         
-        size_entry = Entry(self, width=30)
-        size_entry.grid(row=1, column=2,columnspan=3)
+        size_entry = Entry(self, width=20,)
+        size_entry.grid(row=1, column=2, columnspan=2)
         
-#        five_btn = Button(self, text="Seven", width=10,
-#                          command=lambda: self.set_brush_size(7))
-#        five_btn.grid(row=1, column=2)
-#        seven_btn = Button(self, text="Ten", width=10,
-#                           command=lambda: self.set_brush_size(10))
-#        seven_btn.grid(row=1, column=3)
-#        ten_btn = Button(self, text="Twenty", width=10,
-#                         command=lambda: self.set_brush_size(20))
-#        ten_btn.grid(row=1, column=4)
+        setsize_btn = Button(self, text="Set size", width=10,
+                          command=lambda: self.set_brush_size(int(size_entry.get())))
+        setsize_btn.grid(row=1, column=4)
+        
+
         done_btn = Button(self, text="Done", width=10,
                           command=lambda: self.save())
         done_btn.grid(row=1, column=5)
