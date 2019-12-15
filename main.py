@@ -82,8 +82,8 @@ class DigitsClassifier(Frame):
         self.canv.bind("<B1-Motion>",
                        self.draw)
 
-        text_label = Label(self, text='Prediction')
-        text_label.grid(row=0, column=0, padx=5, pady=5)
+        pred_label = Label(self, text='Prediction')
+        pred_label.grid(row=0, column=0, padx=5, pady=5)
         
         black_btn = Button(self, text="Draw", width=10,
                            command=lambda: self.set_color("black"))
