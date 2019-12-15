@@ -68,50 +68,41 @@ class DigitsClassifier(Frame):
         :return: None
         """
         text_label = Label(self, text=digit)
-        text_label.grid(row=0, column=5, padx=5, pady=5)
+        text_label.grid(row=0, column=1, padx=5, pady=5)
     def setUI(self):
         """Setup for all UI elements"""
-        self.parent.title("Digit Reconition")
+        self.parent.title("Drawn Digit Recognition")
         self.pack(fill=BOTH, expand=1)
-        self.columnconfigure(6,weight=1)
-        self.rowconfigure(2, weight=1)
-        self.canv = Canvas(self, bg="white")
-        self.canv.grid(row=2, column=0, columnspan=7,
+        self.columnconfigure(3,weight=1)
+        self.rowconfigure(6, weight=1)
+        self.canv = Canvas(self, bg="white",width=140, height=140,)
+        self.canv.grid(row=1, column=0, rowspan=5,
                        padx=5, pady=5,
                        sticky=E + W + S + N)
         self.canv.bind("<B1-Motion>",
                        self.draw)
-        color_lab = Label(self, text="Color: ")
-        color_lab.grid(row=0, column=0,
-                       padx=6)
-        black_btn = Button(self, text="Black", width=10,
+
+        text_label = Label(self, text='Prediction')
+        text_label.grid(row=0, column=0, padx=5, pady=5)
+        
+        black_btn = Button(self, text="Draw", width=10,
                            command=lambda: self.set_color("black"))
-        black_btn.grid(row=0, column=2)
-        white_btn = Button(self, text="White", width=10,
+        black_btn.grid(row=1, column=1)
+        white_btn = Button(self, text="Erase", width=10,
                            command=lambda: self.set_color("white"))
-        white_btn.grid(row=0, column=3)
+        white_btn.grid(row=2, column=1)
         clear_btn = Button(self, text="Clear all", width=10,
                            command=lambda: self.canv.delete("all"))
-        clear_btn.grid(row=0, column=4, sticky=W)
+        clear_btn.grid(row=3, column=1)
         
-        size_lab = Label(self, text="Brush size: ")
-        size_lab.grid(row=1, column=0, padx=5)
         
-        size_entry = Entry(self, width=20,)
-        size_entry.grid(row=1, column=2, columnspan=2)
-        
-        setsize_btn = Button(self, text="Set size", width=10,
-                          command=lambda: self.set_brush_size(int(size_entry.get())))
-        setsize_btn.grid(row=1, column=4)
-        
-
-        done_btn = Button(self, text="Done", width=10,
+        done_btn = Button(self, text="Predict", width=10,
                           command=lambda: self.save())
-        done_btn.grid(row=1, column=5)
+        done_btn.grid(row=4, column=1)
 def main():
     root = Tk()
-    root.geometry("400x400")
-    root.resizable(0, 0)
+    root.geometry("280x200")
+    root.resizable(1, 1)
     app = DigitsClassifier(root)
     root.mainloop()
 if __name__ == '__main__':
