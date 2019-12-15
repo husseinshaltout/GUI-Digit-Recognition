@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Dec 13 20:10:54 2019
-
-@author: Dell
-"""
-
 from tkinter import *
 from PIL import Image
 import io
@@ -71,7 +64,7 @@ class DigitsClassifier(Frame):
         text_label.grid(row=0, column=1, padx=5, pady=5)
     def setUI(self):
         """Setup for all UI elements"""
-        self.parent.title("Drawn Digit Recognition")
+        self.parent.title("Digit Recognition")
         self.pack(fill=BOTH, expand=1)
         self.columnconfigure(3,weight=1)
         self.rowconfigure(6, weight=1)
